@@ -9,6 +9,8 @@ require_once get_template_directory() . '/inc/constants.php';
 require_once get_template_directory() . '/inc/helpers.php';
 require_once get_template_directory() . '/inc/template-functions.php';
 require_once get_template_directory() . '/inc/hooks.php';
+require_once get_template_directory() . '/inc/custom-post-types.php';
+require_once get_template_directory() . '/inc/acf-fields.php';
 
 add_action('after_setup_theme', 'fort_theme_setup');
 
