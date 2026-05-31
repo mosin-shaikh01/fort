@@ -12,11 +12,15 @@ require_once get_template_directory() . '/inc/hooks.php';
 require_once get_template_directory() . '/inc/custom-post-types.php';
 require_once get_template_directory() . '/inc/acf-fields.php';
 
+add_action('init', 'fort_load_textdomain', 1);
+
+function fort_load_textdomain(): void {
+    load_theme_textdomain('fort-explorer', get_template_directory() . '/languages');
+}
+
 add_action('after_setup_theme', 'fort_theme_setup');
 
 function fort_theme_setup(): void {
-    load_theme_textdomain('fort-explorer', get_template_directory() . '/languages');
-
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('html5', [
@@ -33,15 +37,19 @@ function fort_theme_setup(): void {
     add_theme_support('wp-block-styles');
     add_theme_support('custom-units', ['px', 'rem', 'em', 'vw', 'vh', '%']);
 
-    register_nav_menus([
-        'primary' => esc_html__('Primary Menu', 'fort-explorer'),
-        'footer' => esc_html__('Footer Menu', 'fort-explorer'),
-    ]);
-
     add_image_size('fort-hero', 1920, 600, ['center', 'center']);
     add_image_size('fort-card', 400, 250, ['center', 'center']);
     add_image_size('blog-featured', 800, 450, ['center', 'center']);
     add_image_size('gallery-thumb', 300, 300, ['center', 'center']);
+}
+
+add_action('init', 'fort_register_nav_menus', 5);
+
+function fort_register_nav_menus(): void {
+    register_nav_menus([
+        'primary' => esc_html__('Primary Menu', 'fort-explorer'),
+        'footer' => esc_html__('Footer Menu', 'fort-explorer'),
+    ]);
 }
 
 add_action('wp_enqueue_scripts', 'fort_enqueue_assets');

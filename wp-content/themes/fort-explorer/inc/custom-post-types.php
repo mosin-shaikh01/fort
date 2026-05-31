@@ -5,8 +5,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-add_action('init', 'fort_register_post_types');
-add_action('init', 'fort_register_taxonomies');
+add_action('init', 'fort_register_post_types', 5);
+add_action('init', 'fort_register_taxonomies', 5);
 
 function fort_register_post_types(): void {
     register_post_type('fort', [

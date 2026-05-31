@@ -5,11 +5,14 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if (!function_exists('acf_add_local_field_group')) {
-    return;
-}
+add_action('acf/init', 'fort_register_acf_fields');
 
-acf_add_local_field_group([
+function fort_register_acf_fields(): void {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group([
     'key' => 'group_fort_location_details',
     'title' => esc_html__('Location Details', 'fort-explorer'),
     'fields' => [
@@ -219,4 +222,5 @@ acf_add_local_field_group([
             ],
         ],
     ],
-]);
+    ]);
+}
