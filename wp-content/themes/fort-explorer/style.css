@@ -1,0 +1,43 @@
+/*!
+Theme Name: Fort Explorer
+Theme URI: https://fortexplorer.local
+Author: Fort Explorer Team
+Author URI: https://fortexplorer.local
+Description: Historical Fort Information and Blogging Platform - Premium WordPress Theme
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 7.0
+Requires PHP: 8.3
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: fort-explorer
+Domain Path: /languages
+Tags: forts, history, travel, blog, responsive, accessible, gutenberg
+
+== Description ==
+Fort Explorer is a premium WordPress theme designed specifically for historical fort information websites and editorial blogs. Built with modern web standards, accessibility compliance, and performance optimization at its core.
+
+== Features ==
+- Modern, responsive design
+- Historical fort showcase
+- Blog/editorial support
+- Premium typography (Playfair Display, Inter, Cinzel)
+- Brand color system
+- WCAG 2.1 AA accessibility
+- Core Web Vitals optimized
+- Gutenberg block editor support
+- Mobile-first approach
+- No page builder dependency
+
+== Installation ==
+1. Download fort-explorer.zip
+2. Go to Appearance > Themes > Add New
+3. Click "Upload Theme"
+4. Select fort-explorer.zip
+5. Click "Install Now"
+6. Activate Theme
+
+== Changelog ==
+= 1.0.0 =
+* Initial theme release
+*/
