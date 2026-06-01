@@ -88,3 +88,17 @@ function fort_get_theme_option(string $option, mixed $default = false): mixed {
 function fort_update_theme_option(string $option, mixed $value): bool {
     return update_option('fort_' . $option, $value);
 }
+
+function fort_image_placeholder(string $extra_class = ''): void {
+    $classes = trim('img-placeholder ' . $extra_class);
+    ?>
+    <div class="<?php echo esc_attr($classes); ?>" role="img" aria-label="<?php esc_attr_e('No image available', 'fort-explorer'); ?>">
+        <svg class="img-placeholder__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span class="img-placeholder__text"><?php esc_html_e('No Image', 'fort-explorer'); ?></span>
+    </div>
+    <?php
+}

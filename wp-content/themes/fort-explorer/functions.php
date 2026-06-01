@@ -64,8 +64,8 @@ function fort_enqueue_assets(): void {
 
     wp_enqueue_style(
         'fort-style',
-        get_stylesheet_uri(),
-        [],
+        get_template_directory_uri() . '/assets/css/style.css',
+        ['fort-google-fonts'],
         FORT_THEME_VERSION
     );
 

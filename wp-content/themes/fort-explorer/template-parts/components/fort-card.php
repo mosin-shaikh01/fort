@@ -26,12 +26,10 @@ $excerpt = wp_trim_words(get_the_excerpt($post_id), 15, '...');
                 get_post_thumbnail_id($post_id),
                 'fort-card',
                 false,
-                ['class' => 'fort-card__img', 'loading' => 'lazy']
+                ['class' => 'fort-card__img', 'loading' => 'lazy', 'alt' => esc_attr(get_the_title($post_id))]
             );
         } else {
-            echo '<div class="fort-card__placeholder" style="background: var(--color-bg-light); width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">';
-            echo esc_html__('No image', 'fort-explorer');
-            echo '</div>';
+            fort_image_placeholder();
         }
         ?>
     </div>

@@ -25,12 +25,10 @@ $date = get_the_date('F d, Y', $post_id);
                 get_post_thumbnail_id($post_id),
                 'blog-featured',
                 false,
-                ['class' => 'blog-card__img', 'loading' => 'lazy']
+                ['class' => 'blog-card__img', 'loading' => 'lazy', 'alt' => esc_attr(get_the_title($post_id))]
             );
         } else {
-            echo '<div class="blog-card__placeholder" style="background: var(--color-bg-light); width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;">';
-            echo esc_html__('No image', 'fort-explorer');
-            echo '</div>';
+            fort_image_placeholder();
         }
         ?>
     </div>

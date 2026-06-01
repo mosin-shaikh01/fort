@@ -2,42 +2,51 @@
    Fort Explorer Theme - Main JavaScript
    ======================================== */
 
-(function() {
+(function () {
   'use strict';
 
-  // Initialize theme
-  document.addEventListener('DOMContentLoaded', function() {
-    initTheme();
-    handleNavigation();
+  document.addEventListener('DOMContentLoaded', function () {
+    initMobileMenu();
+    markActiveNavLinks();
   });
 
-  /**
-   * Initialize theme features
-   */
-  function initTheme() {
-    console.log('Fort Explorer theme initialized');
-  }
+  function initMobileMenu() {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav    = document.getElementById('primary-menu');
 
-  /**
-   * Handle navigation interactions
-   */
-  function handleNavigation() {
-    const navLinks = document.querySelectorAll('.site-navigation a');
+    if (!toggle || !nav) {
+      return;
+    }
 
-    navLinks.forEach(link => {
-      if (link.href === window.location.href) {
-        link.classList.add('is-active');
+    toggle.addEventListener('click', function () {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('site-navigation--open', !expanded);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('site-navigation--open')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('site-navigation--open');
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('site-navigation--open');
       }
     });
   }
 
-  // Lazy load images
-  if ('IntersectionObserver' in window) {
-    const images = document.querySelectorAll('img[loading="lazy"]');
+  function markActiveNavLinks() {
+    const navLinks = document.querySelectorAll('.site-navigation a');
 
-    images.forEach(img => {
-      if (!img.src && img.dataset.src) {
-        img.src = img.dataset.src;
+    navLinks.forEach(function (link) {
+      if (link.href === window.location.href) {
+        link.setAttribute('aria-current', 'page');
       }
     });
   }
