@@ -223,4 +223,31 @@ acf_add_local_field_group([
         ],
     ],
     ]);
+
+    acf_add_local_field_group([
+    'key' => 'group_homepage_hero',
+    'title' => esc_html__('Homepage Hero', 'fort-explorer'),
+    'fields' => [
+        [
+            'key' => 'field_hero_background_image',
+            'label' => esc_html__('Hero Background Image', 'fort-explorer'),
+            'name' => 'hero_background_image',
+            'type' => 'image',
+            'required' => 0,
+            'return_format' => 'array',
+            'preview_size' => 'medium',
+            'library' => 'all',
+            'instructions' => esc_html__('Upload or select an image for the hero section background. Recommended size: 1920x1200px', 'fort-explorer'),
+        ],
+    ],
+    'location' => [
+        [
+            [
+                'param' => 'page_type',
+                'operator' => '==',
+                'value' => 'front_page',
+            ],
+        ],
+    ],
+    ]);
 }
